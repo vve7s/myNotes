@@ -1,0 +1,90 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// Dark tema tanımı
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: mat.m2-define-palette(mat.$m2-pink-palette),
+    accent: mat.m2-define-palette(mat.$m2-blue-grey-palette),
+  ),
+  typography: mat.m2-define-typography-config(),
+  density: 0,
+));
+
+// Light tema tanımı
+$light-theme: mat.m2-define-light-theme((
+  color: (
+    primary: mat.m2-define-palette(mat.$m2-indigo-palette),
+    accent: mat.m2-define-palette(mat.$m2-pink-palette),
+  ),
+));
+
+@include mat.core-theme($light-theme);
+
+body, .logo, mat-toolbar, mat-icon, form, .border {
+  transition: all 0.2s linear; /* Tüm stiller için geçiş süresi */
+}
+
+// body.dark-theme: Dark mod olduğunda renkleri güncelle
+body.dark-theme {
+  @include mat.core-color($dark-theme); // Yalnızca renk stillerini uygula
+  @include mat.button-color($dark-theme); // Yalnızca button renk stillerini uygula
+  .logo {
+    content: url('assets/light-logo.png');
+  }
+  mat-toolbar {
+    background-color: #0d1117 !important;
+    color: #fff !important;
+  }
+  mat-icon {
+    color: #fff !important;
+  }
+  form {
+    background-color: #151b23 !important;
+    input {
+      color: #fff !important;
+    }
+  }
+  .border {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+  textarea {
+    background-color: #151b23 !important;
+    color: #fff !important;
+  }
+
+  .mat-mdc-menu-panel {
+    background-color: #151b23 !important;
+    button {
+      color: #fff !important;
+    }
+  }
+
+  --mdc-outlined-text-field-hover-label-text-color: #005cbb !important;
+  --mdc-outlined-text-field-hover-outline-color: #005cbb !important;
+
+  .mat-mdc-unelevated-button.mat-primary {
+    --mdc-filled-button-container-color: #005cbb !important;
+  }
+}
+
+
+// Light mod: Yalnızca renk stillerini uygula
+body {
+  @include mat.core-color($light-theme);
+  @include mat.button-color($light-theme);
+  .logo {
+    content: url('assets/dark-logo.png');
+  }
+  mat-toolbar {
+    background-color: rgb(29 78 216) !important;
+    color: #fff !important;
+  }
+  mat-icon {
+    color: #fff !important;
+  }
+  .border {
+    border: 1px solid rgba(0, 0, 0, 0.5);
+  }
+}

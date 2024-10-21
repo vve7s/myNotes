@@ -1,0 +1,29 @@
+<div class="h-screen flex flex-col items-center justify-center space-y-2">
+
+  <span class="flex flex-col justify-start items-center">
+    <img class="logo" width="100" height="100" alt="note">
+    <span class="py-4 font-bold">Sign in to Note</span>
+  </span>
+
+  <form [formGroup]="form" class="space-y-4 w-full max-w-md border p-4 rounded-lg">
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username" placeholder="Ad Soyad">
+      <mat-error *ngIf="form.get('username')?.hasError('required')">
+        Username is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="w-full">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" placeholder="Telefon Numarası">
+      <mat-error *ngIf="form.get('password')?.hasError('required')">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <button class="w-full" mat-flat-button color="primary" (click)="login()">Sign in</button>
+
+  </form>
+</div>

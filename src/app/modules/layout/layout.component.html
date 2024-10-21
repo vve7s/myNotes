@@ -1,0 +1,26 @@
+<div class="flex flex-col">
+
+  <mat-toolbar class="bg-cyan-950 flex justify-between">
+    <span>
+      NOTE
+    </span>
+
+    <span class="flex flex-row justify-center items-center">
+      <mat-icon class="cursor-pointer" (click)="toggleIcon()">{{ icon }}</mat-icon>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Logout</button>
+      </mat-menu>
+
+    </span>
+
+  </mat-toolbar>
+
+  <div class="flex flex-col">
+    <router-outlet></router-outlet>
+  </div>
+</div>
